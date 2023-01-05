@@ -1,4 +1,4 @@
-import {createBrowserRouter} from 'react-router-dom'
+import {createBrowserRouter,Navigate} from 'react-router-dom'
 import Login from "./views/Login.jsx";
 import Register from "./views/Register.jsx";
 import Users from "./views/Users.jsx";
@@ -15,6 +15,10 @@ const router = createBrowserRouter(
 	 element:<Default />,
 	 children:[
 		 	{
+				path:'/',
+				element:<Navigate to="/users" />
+			},
+			{
 				path:'/users',
 				element:<Users />
 			},
@@ -28,7 +32,7 @@ const router = createBrowserRouter(
 				element:<UserForm key="userUpdate"/>
 			},
 			{
-				path:'/dashboard',
+				path:'/about',
 				element:<Dashboard />
 			},
 	 	]

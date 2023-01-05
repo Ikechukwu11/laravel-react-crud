@@ -43,7 +43,7 @@ input {
 }
 
 input:focus {
-  border-color: #5b08a7;
+  border-color: #009688;
 }
 
 .btn,
@@ -52,7 +52,7 @@ input:focus {
 .btn-delete {
   font-family: "Roboto", sans-serif;
   outline: 0;
-  background: #5b08a7;
+  background: #009688;
   border: 0;
   text-decoration: none;
   padding: 15px;
@@ -70,7 +70,7 @@ input:focus {
 .btn-add,
 .btn-edit,
 .btn-delete {
-  padding: 0.5rem 0.75rem;
+  padding: 0.7rem;
   font-size: 14px;
   border-radius: 4px;
 }
@@ -82,15 +82,15 @@ input:focus {
 }
 
 .btn-paginate {
-  border: 1px solid #5b08a7;
-  color: #5b08a7;
+  border: 1px solid #009688;
+  color: #009688;
   background-color: #fff;
 }
 
 .btn-paginate.active {
-  border: 1px solid #5b08a7;
+  border: 1px solid #009688;
   color: #fff;
-  background-color: #5b08a7;
+  background-color: #009688;
 }
 
 .btn-logout {
@@ -107,7 +107,7 @@ input:focus {
 .btn:hover,
 .btn:active,
 .btn:focus {
-  background: #5b08a7;
+  background: #009688;
   color: white;
 }
 
@@ -215,7 +215,7 @@ table > tbody > tr > td {
 }
 
 .login-signup-form .form .message a {
-  color: #5b08a7;
+  color: #009688;
   text-decoration: none;
 }
 
@@ -226,9 +226,17 @@ table > tbody > tr > td {
 }
 
 #defaultLayout aside {
-  width: 240px;
-  background-color: #5b08a7;
+  width: 150px;
+  text-align: center;
+  background-color: #009688;
   padding: 1rem;
+  position: fixed;
+  top: 0;
+  bottom: 0;
+  left: 0;
+  box-shadow: 0 2px 5px 0 rgb(0 0 0 / 5%), 0 2px 10px 0 rgb(0 0 0 / 5%);
+  z-index: 600;
+  overflow-x: auto;
 }
 
 #defaultLayout aside > a {
@@ -238,10 +246,17 @@ table > tbody > tr > td {
   color: white;
   text-decoration: none;
   transition: all 0.2s;
+  margin-bottom: 10px;
 }
 
 #defaultLayout aside > a:hover {
-  background-color: rgba(0, 0, 0, 0.2);
+  background-color: rgba(0, 0, 0, 0.2);;
+  color: #fff;
+}
+
+#defaultLayout aside > a.active {
+    background-color: white;
+    color: #009688;
 }
 
 #defaultLayout .content {
@@ -250,18 +265,54 @@ table > tbody > tr > td {
 
 #defaultLayout header {
   height: 80px;
-  padding: 2rem 3rem;
+  padding: 2rem;
   background-color: white;
   box-shadow: 1px 1px 2px rgba(0, 0, 0, 0.2);
   display: flex;
   justify-content: space-between;
   align-items: center;
+  margin-left: 150px;
 }
 
 #defaultLayout main {
   padding: 2rem;
+  margin-left: 150px;
 }
 
+.logout-text {
+    display: block;
+  }
+
+  .logout-icon {
+    display: none;
+  }
+
+@media (max-width: 767.98px){
+  #defaultLayout aside {
+    width: 100%;
+    display: none;
+  }
+  
+  #defaultLayout{
+    flex-direction: column;
+  }
+
+  #defaultLayout header {
+    margin-left: 0;
+  }
+
+  #defaultLayout main {
+    margin-left: 0;
+  }
+
+  .logout-text {
+    display: none;
+  }
+
+  .logout-icon {
+    display: block;
+  }
+}
 .animated {
   -webkit-animation-duration: 0.3s;
   animation-duration: 0.3s;
@@ -283,4 +334,45 @@ table > tbody > tr > td {
     opacity: 1;
     transform: translateY(0);
   }
+}
+
+/*scrolling responsive table*/
+.table-responsive {
+  overflow-x:auto ;
+}
+
+table{
+  border-collapse:collapse;
+  width:100%;
+  }
+  
+td,th {
+  border:1px solid #ddddddd;
+  text-align:left;
+  padding:8px;
+}
+  
+th {
+ /* color:white!important;*/
+}
+  
+  
+th:first-child, td:first-child{
+  position:sticky!important;
+  left:0px!important;
+  border: ;
+  width: 10px!important;
+  z-index: 1;
+}
+
+td:first-child{
+  background-color:white!important;
+}
+
+th:nth-child(2), td:nth-child(2){
+  min-width: 67px!important;
+}
+
+th:nth-child(3), td:nth-child(3){
+  min-width: 210px!important;
 }

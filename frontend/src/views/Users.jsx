@@ -66,6 +66,7 @@ export default function Users() {
         </Link>
       </div>
       <div className="card animated fadeInDown">
+      <div className="table-responsive">
         <table>
           <thead>
             <tr>
@@ -113,73 +114,73 @@ export default function Users() {
           )}
         </table>
         <br />
-        <div style={{ textAlign: "center" }}>
-          <p>
-            <small>
-              Showing page {page} of {totalPages}{" "}
-              {totalPages > 1 ? "records" : "record"}
-            </small>
-          </p>
-          <button
-            className="btn btn-paginate"
-            onClick={() => setPage(page - 1)}
-            disabled={page === 1}
-          >
-            Previous
-          </button>
-
-          {/*pageNumbers.map((number) => (
-            <button
-              key={number}
-              className={`btn btn-paginate ${number === page ? "active" : ""}`}
-              onClick={() => setPage(number)}
-              disabled={number === page}
-            >
-              {number}
-            </button>
-          ))*/}
-          
-          {/* Only show the first, current, and last page numbers */}
-  
-      
-      {page > 3 && (
-  <button
-    key={1}
-    onClick={() => setPage(1)}
-    className={`btn btn-paginate ${1 === page ? 'active' : ''}`}
-  >
-    1
-  </button>
-)}
-{page > 4 && <span>...</span>}
-{pageNumbers.filter(number => Math.abs(number - page) < 2).map(number => (
-  <button
-    key={number}
-    onClick={() => setPage(number)}
-    className={`btn btn-paginate ${number === page ? 'active' : ''}`}
-  >
-    {number}
-  </button>
-))}
-{page < totalPages - 3 && <span>...</span>}
-{page < totalPages - 2 && (
-  <button
-    key={totalPages}
-    onClick={() => setPage(totalPages)}
-    className={`btn btn-paginate ${totalPages === page ? 'active' : ''}`}
-  >
-    {totalPages}
-  </button>
-)}
         
+      </div>
+      <div style={{ textAlign: "center" }}>
+        <p>
+          <small>
+            Showing page {page} of {totalPages}{" "}
+            {totalPages > 1 ? "records" : "record"}
+          </small>
+        </p>
+        <button
+          className="btn btn-paginate"
+          onClick={() => setPage(page - 1)}
+          disabled={page === 1}
+        >
+          Previous
+        </button>
+
+        {/*pageNumbers.map((number) => (
           <button
-            className="btn btn-paginate"
-            onClick={() => setPage(page + 1)}
-            disabled={page === totalPages}>
-          
-            Next
+            key={number}
+            className={`btn btn-paginate ${number === page ? "active" : ""}`}
+            onClick={() => setPage(number)}
+            disabled={number === page}
+          >
+            {number}
           </button>
-        </div>
+        ))*/}
+        
+        {/* Only show the first, current, and last page numbers */}
+
+        {page > 3 && (
+          <button
+            key={1}
+            onClick={() => setPage(1)}
+            className={`btn btn-paginate ${1 === page ? 'active' : ''}`}
+          >
+            1
+          </button>
+        )}
+        {page > 4 && <span>...</span>}
+        {pageNumbers.filter(number => Math.abs(number - page) < 2).map(number => (
+          <button
+            key={number}
+            onClick={() => setPage(number)}
+            className={`btn btn-paginate ${number === page ? 'active' : ''}`}
+          >
+            {number}
+          </button>
+        ))}
+        {page < totalPages - 3 && <span>...</span>}
+        {page < totalPages - 2 && (
+          <button
+            key={totalPages}
+            onClick={() => setPage(totalPages)}
+            className={`btn btn-paginate ${totalPages === page ? 'active' : ''}`}
+          >
+            {totalPages}
+          </button>
+        )}
+      
+        <button
+          className="btn btn-paginate"
+          onClick={() => setPage(page + 1)}
+          disabled={page === totalPages}>
+          Next
+        </button>
+      </div>
       </div>
     </div>
   );
