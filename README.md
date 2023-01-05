@@ -3,7 +3,7 @@
 	</a>
 	<a href="https://laravel-react.kmovic.xyz"><img src="https://vitejs.dev/logo-with-shadow.png" width="100" alt="Vite Logo">
 	</a>
-	<a href="https://laravel-react.kmovic.xyz"><img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a7/React-icon.svg/2300px-React-icon.svg.png" width="100" alt="React Logo">
+	<a href="https://laravel-react.kmovic.xyz"><img src="https://w7.pngwing.com/pngs/79/518/png-transparent-js-react-js-logo-react-react-native-logos-icon-thumbnail.png" width="100" alt="React Logo">
 	</a>
 </p>
 
