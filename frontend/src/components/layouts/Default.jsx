@@ -9,17 +9,9 @@ export default function Default(){
 	const {user,token,setUser,setToken}=useStateContext();
 	const [showmenu, setShowMenu] = useState(false);
 	const navigate = useNavigate();
-	
-	if (!token) {
-	  navigate("/login");
-		return ;
-		//<Navigate to="/login" />
-	}
-
 	const showMenu = (ev)=>{
 		setShowMenu(current => !current);
 	}
-	
 	
 	const onLogout = (ev)=>{
 		ev.preventDefault();
@@ -40,6 +32,12 @@ export default function Default(){
 			setUser(data)
 		})
 	},[])
+	
+	if (!token) {
+	  //navigate("/login");
+		return <Navigate to="/login" />
+	}
+
 	return (
 		<div id="defaultLayout">
 			<aside className={`animated slideInLeft ${showmenu ? 'showmenu' : ''}`}>
