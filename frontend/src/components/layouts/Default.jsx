@@ -1,4 +1,4 @@
-import {Outlet,Navigate,Link,useLocation} from 'react-router-dom';
+import {Outlet,Navigate,Link,useLocation,useNavigate} from 'react-router-dom';
 import {useEffect,useState} from 'react';
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import axiosClient from "../../axios";
@@ -8,23 +8,29 @@ export default function Default(){
 
 	const {user,token,setUser,setToken}=useStateContext();
 	const [showmenu, setShowMenu] = useState(false);
+	const navigate = useNavigate();
+	
+	if (!token) {
+	  navigate("/login");
+		return ;
+		//<Navigate to="/login" />
+	}
 
 	const showMenu = (ev)=>{
-		//alert('hi');
 		setShowMenu(current => !current);
-		console.log(showmenu);
 	}
-	if (!token) {
-		return <Navigate to="/login" />
-	}
+	
 	
 	const onLogout = (ev)=>{
 		ev.preventDefault();
 
 		axiosClient.post('/logout')
 		.then(({data}) =>{
+		  
 			setUser({})
 			setToken(null)
+			navigate("/login");
+			
 		})
 	}
  
