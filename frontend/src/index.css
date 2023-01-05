@@ -289,9 +289,15 @@ table > tbody > tr > td {
 
 @media (max-width: 767.98px){
   #defaultLayout aside {
-    width: 100%;
+    width: 40%;
     display: none;
+    margin-top: 82px;
+    padding-top: 40px;
   }
+  
+    #defaultLayout aside.showmenu {
+      display: block;
+    }
   
   #defaultLayout{
     flex-direction: column;
@@ -319,7 +325,35 @@ table > tbody > tr > td {
   -webkit-animation-fill-mode: both;
   animation-fill-mode: both;
 }
+@keyframes slideOutLeft {
+  from {
+    transform: translate3d(0, 0, 0);
+  }
 
+  to {
+    visibility: hidden;
+    transform: translate3d(-100%, 0, 0);
+  }
+}
+
+.slideOutLeft {
+  animation-name: slideOutLeft;
+}
+
+@keyframes slideInLeft {
+  from {
+    transform: translate3d(-100%, 0, 0);
+    visibility: visible;
+  }
+
+  to {
+    transform: translate3d(0, 0, 0);
+  }
+}
+
+.slideInLeft {
+  animation-name: slideInLeft;
+}
 .fadeInDown {
   -webkit-animation-name: fadeInDown;
   animation-name: fadeInDown;
@@ -375,4 +409,32 @@ th:nth-child(2), td:nth-child(2){
 
 th:nth-child(3), td:nth-child(3){
   min-width: 210px!important;
+}
+/*hamburger*/
+.dash1,
+.dash2,
+.dash3 {
+  position: relative;
+  height: 2px;
+  width: 30px;
+  background-color: #111;
+  border-radius: 5px;
+  margin-bottom: 10px;
+  transition: all 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.dash3 {
+  margin-bottom: none;
+}
+
+.clicked .dash1 {
+  transform: translateY(10px) rotate(135deg);
+}
+
+.clicked .dash2 {
+  transform: translate(100vw);
+}
+
+.clicked .dash3 {
+  transform: translateY(-15px) rotate(-135deg);
 }

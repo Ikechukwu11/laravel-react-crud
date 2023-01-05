@@ -1,5 +1,5 @@
 import {Outlet,Navigate,Link,useLocation} from 'react-router-dom';
-import {useEffect} from 'react';
+import {useEffect,useState} from 'react';
 import {useStateContext} from "../contexts/ContextProvider.jsx";
 import axiosClient from "../../axios";
 
@@ -7,9 +7,12 @@ export default function Default(){
 	let location = useLocation().pathname.replace('/','');
 
 	const {user,token,setUser,setToken}=useStateContext();
+	const [showmenu, setShowMenu] = useState(false);
 
-	const showMenu = ()=>{
-		alert('hi');
+	const showMenu = (ev)=>{
+		//alert('hi');
+		setShowMenu(current => !current);
+		console.log(showmenu);
 	}
 	if (!token) {
 		return <Navigate to="/login" />
@@ -33,14 +36,20 @@ export default function Default(){
 	},[])
 	return (
 		<div id="defaultLayout">
-			<aside>
+			<aside className={`animated slideInLeft ${showmenu ? 'showmenu' : ''}`}>
 				<Link to="/users" className={location==='users' ?'active':''}>Users</Link>
 				<Link to="/about" className={location==='about' ?'active':''}>About</Link>
 			</aside>
 			<div className="content">
 				<header>
 					<div style={{display:'flex', alignItems:'center'}}>
-					<span className="logout-icon" style={{margin:'0 5px'}} onClick={showMenu}>Menu</span>
+					<span className={`logout-icon ${showmenu ? 'clicked' : ''}`} style={{margin:'10px 20px 0 0'}} onClick={(ev)=>showMenu()}>
+					   <div className="hamburger">
+             <div className="dash1"></div>
+             <div className="dash2"></div>
+             <div className="dash3"></div>
+             </div>
+					</span>
 						<span style ={{textTransform : 'capitalize'}}>{location}</span>
 					</div>
 					<div style ={{display:'flex', alignItems:'center'}}>
