@@ -21,20 +21,22 @@ export default function Default(){
 		  
 			setUser({})
 			setToken(null)
-			navigate("/login");
+			return <Navigate to="/login" />
+			//navigate("/login");
 			
 		})
 	}
  
 	useEffect( () =>{
-		axiosClient.get('/user')
-		.then(({data}) =>{
-			setUser(data)
-		})
+		if (token) { 
+			axiosClient.get('/user')
+			.then(({data}) =>{
+				setUser(data)
+			})
+		}
 	},[])
 	
-	if (!token) {
-	  //navigate("/login");
+	if (!token || !user) {
 		return <Navigate to="/login" />
 	}
 

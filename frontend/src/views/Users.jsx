@@ -29,9 +29,9 @@ export default function Users() {
 
         setLoading(false);
 
-        console.log(data.data);
-        console.log(users);
-        console.log(data.meta.last_page);
+        //console.log(data.data);
+        //console.log(users);
+        //console.log(data.meta.last_page);
       })
       .catch(() => {
         setLoading(false);

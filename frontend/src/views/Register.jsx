@@ -21,7 +21,7 @@ export default function Register(){
 			password_confirmation: confirmPasswordRef.current.value,
 		}
 
-		console.log(payload);
+		//console.log(payload);
 		axiosClient.post("/register", payload)
 		.then(({data})=>{
 			setUser(data.user)
@@ -30,7 +30,7 @@ export default function Register(){
 		.catch(err =>{
 			const response = err.response;
 			if(response && response.status===422){
-				console.log(response.data.errors);
+				//console.log(response.data.errors);
 
 				error.name = response.data.errors.name;
 				error.email = response.data.errors.email;

@@ -17,12 +17,12 @@ export default function Login(){
 			password: passwordRef.current.value,
 		}
 
-		console.log(payload);
+		//console.log(payload);
 		
 		await axiosClient.post("/login", payload)
 			.then(({data})=>{
 
-				console.log(data);
+				//console.log(data);
 				if (!data.errorState) {
 					error.message=data.message;
 					error.type='alert-success';
@@ -43,7 +43,7 @@ export default function Login(){
 			})
 			.catch(err =>{
 				const response = err.response;
-				console.log(response.status);
+				//console.log(response.status);
 				if(response && response.status===422){
 				//console.log(response.data.errors);
 				error.email = response.data.errors.email;
@@ -51,7 +51,7 @@ export default function Login(){
 				setErrors(error);
 			}
 				//if(response && response.status===422){
-				console.log(response.data.errors);
+				//console.log(response.data.errors);
 			//}
 		})
 	}

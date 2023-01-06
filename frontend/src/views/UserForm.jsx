@@ -34,13 +34,13 @@ export default function UserForm(){
 	const onSubmit = (ev)=>{
 		ev.preventDefault();
 		const error = {};
-		console.log(user);
+		//console.log(user);
 
 		//update existing user
 		if (user.id) {
 			axiosClient.put(`/users/${user.id}`, user)
 			.then(({data})=>{
-				console.log(data);
+				//console.log(data);
 				error.message= 'User updated successfully';
 				error.type='alert-success';
 				setErrors(error);
@@ -52,7 +52,7 @@ export default function UserForm(){
 			.catch(err =>{
 				const response = err.response;
 				if(response && response.status===422){
-					console.log(response.data.errors);
+					//console.log(response.data.errors);
 
 					error.name = response.data.errors.name;
 					error.email = response.data.errors.email;
@@ -65,7 +65,7 @@ export default function UserForm(){
 		} else {
 			axiosClient.post(`/users`,user)
 			.then(({data})=>{
-				console.log(data);
+				//console.log(data);
 				error.message= 'User created successfully';
 				error.type='alert-success';
 				setErrors(error);
@@ -77,7 +77,7 @@ export default function UserForm(){
 			.catch(err =>{
 				const response = err.response;
 				if(response && response.status===422){
-					console.log(response.data.errors);
+					//console.log(response.data.errors);
 
 					error.name = response.data.errors.name;
 					error.email = response.data.errors.email;
