@@ -1,6 +1,9 @@
 import { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import axiosClient from "../axios";
+import {useStateContext} from "../components/contexts/ContextProvider.jsx";
+
+
 export default function Users() {
   const [users, setUsers] = useState([]);
   const [loading, setLoading] = useState(false);
@@ -8,6 +11,7 @@ export default function Users() {
   const [totalPages, setTotalPages] = useState(1);
   const [pageNumbers, setPageNumbers] = useState([]);
   const [perpage, setPerPage] = useState(0);
+
 
   const getUsers = async () => {
     setLoading(true);
@@ -26,7 +30,7 @@ export default function Users() {
           pageNumbers.push(i);
         }
         setPageNumbers(pageNumbers);
-
+          
         setLoading(false);
 
         //console.log(data.data);
@@ -38,12 +42,20 @@ export default function Users() {
       });
   };
 
+  const {setNotification} = useStateContext();
+
   const onDelete = (u) => {
+    let notificationData = '';
     if (!window.confirm("Do you really want to delete this user?")) {
       return;
     }
 
     axiosClient.delete(`/users/${u.id}`).then(() => {
+      notificationData = {
+            message:'User deleted successfully',
+            type:'notification-success'
+          }
+          setNotification(notificationData);
       getUsers();
     });
   };

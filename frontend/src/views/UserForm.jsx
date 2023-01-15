@@ -30,10 +30,11 @@ export default function UserForm(){
 		},[])
 	}
 	const [errors, setErrors] = useState({});
-
+	const {setNotification} = useStateContext();
 	const onSubmit = (ev)=>{
 		ev.preventDefault();
 		const error = {};
+		let notificationData = '';
 		//console.log(user);
 
 		//update existing user
@@ -44,10 +45,15 @@ export default function UserForm(){
 				error.message= 'User updated successfully';
 				error.type='alert-success';
 				setErrors(error);
+				notificationData = {
+					message:error.message,
+					type:'notification-success'
+				}
+				setNotification(notificationData);
 
 				setTimeout(function(){
 					navigate("/users")
-				}, 500)
+				}, 700)
 			})
 			.catch(err =>{
 				const response = err.response;
@@ -56,10 +62,16 @@ export default function UserForm(){
 
 					error.name = response.data.errors.name;
 					error.email = response.data.errors.email;
-					error.password = response.data.errors.password;
-					error.message=response.data.message;
+					//error.password = response.data.errors.password;
+					error.message=response.data.message ? response.data.message : response?.message;
 					error.type='alert-danger';
 					setErrors(error);
+					
+					notificationData = {
+						message:error.message,
+						type:'notification-danger'
+					}
+					setNotification(notificationData);
 				}
 			})
 		} else {
@@ -69,10 +81,14 @@ export default function UserForm(){
 				error.message= 'User created successfully';
 				error.type='alert-success';
 				setErrors(error);
-
+				notificationData = {
+						message:error.message,
+						type:'notification-success'
+					}
+				setNotification(notificationData);
 				setTimeout(function(){
 					navigate("/users")
-				}, 500)
+				}, 700)
 			})
 			.catch(err =>{
 				const response = err.response;
@@ -85,6 +101,12 @@ export default function UserForm(){
 					error.message=response.data.message;
 					error.type='alert-danger';
 					setErrors(error);
+
+					notificationData = {
+						message:error.message,
+						type:'notification-danger'
+					}
+					setNotification(notificationData);
 				}
 			})
 		}

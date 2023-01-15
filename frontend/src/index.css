@@ -177,9 +177,17 @@ table > tbody > tr > td {
   bottom: 1rem;
   z-index: 100;
   padding: 1rem 1.5rem;
-  background-color: #00a762;
   color: white;
   border-radius: 0.5rem;
+}
+
+.notification-success {
+  background-color: #00a762;
+}
+
+
+.notification-danger {
+  background-color: #ff4040;
 }
 
 /* Login/Signup forms*/

@@ -6,7 +6,7 @@ import axiosClient from "../../axios";
 export default function Default(){
 	let location = useLocation().pathname.replace('/','');
 
-	const {user,token,setUser,setToken}=useStateContext();
+	const {user,token,notification,setUser,setToken}=useStateContext();
 	const [showmenu, setShowMenu] = useState(false);
 	const navigate = useNavigate();
 	const showMenu = (ev)=>{
@@ -67,6 +67,12 @@ export default function Default(){
 					<Outlet/>
  				</main>
 			</div>
+
+			{notification && 
+				<div className={`notification ${notification.type}` }>
+					{notification.message}
+				</div>
+			}
 			
 		</div>
 	)
